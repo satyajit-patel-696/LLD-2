@@ -1,5 +1,5 @@
 from enum import Enum
-class VechileType(Enum):
+class VehicleType(Enum):
     SMALL="SMALL"
     MEDIUM="MEDIUM"
     LARGE="LARGE"

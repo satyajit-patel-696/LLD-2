@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from ..models.vehicle import Vehicle
-from ..enums.vehicle_type import VechileType
+from ..enums.vehicle_type import VehicleType
 from typing import Optional
 @dataclass
 class VehicleRepository:
