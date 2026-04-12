@@ -1,5 +1,7 @@
 from enum import Enum
 class VehicleType(Enum):
-    SMALL="SMALL"
-    MEDIUM="MEDIUM"
-    LARGE="LARGE"
+    BIKE="BIKE"
+    CAR="CAR"
+    TRUCK="TRUCK"
+    BUS="BUS"   
+    SCOOTER="SCOOTER"

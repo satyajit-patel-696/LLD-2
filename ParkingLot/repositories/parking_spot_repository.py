@@ -16,7 +16,8 @@ class ParkingSpotRepository:
         return list(self.parking_spots.values())
     def find_available_by_type(self, spot_type:str)->list[ParkingSpot]:
         return [s for s in self.parking_spots.values() if s.spot_type==spot_type and s.is_avilable()]
-
+    def find_avilable_spots(self)->list[ParkingSpot]:
+        return [s for s in self.parking_spots.values() if s.is_avilable()]
     def update_status(self, spot_id:str, status:SpotStatus)->Optional[ParkingSpot]:
         spot = self.find_by_spot_id(spot_id)
         if spot:
