@@ -1,12 +1,12 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Optional
 
 from ParkingLot.models.payments import Payment
 
 @dataclass
 class PaymentRepository:
-    payments: dict[str, Payment] = {}   #payment_id to payment mapping  
-    ticket_id_to_payment: dict[str, Payment] = {}  #ticket_id to payment mapping
+    payments: dict[str, Payment] = field(default_factory=dict)   #payment_id to payment mapping
+    ticket_id_to_payment: dict[str, Payment] = field(default_factory=dict)  #ticket_id to payment mapping
     def save(self, payment:Payment):
         self.payments[payment.payment_id] = payment
         self.ticket_id_to_payment[payment.ticket_id] = payment

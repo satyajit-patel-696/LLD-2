@@ -1,9 +1,9 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Optional
 from ..models.parking_ticket import ParkingTicket
 @dataclass
 class TicketRepository:
-    tickets: dict[str,ParkingTicket] = {}   #ticket_id to parking ticket mapping
+    tickets: dict[str,ParkingTicket] = field(default_factory=dict)   #ticket_id to parking ticket mapping
 
     def save(self, ticket:ParkingTicket):
         self.tickets[ticket.ticket_id] = ticket

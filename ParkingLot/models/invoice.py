@@ -9,7 +9,7 @@ from datetime import datetime
 class Invoice:
     invoice_id: str
     ticket:ParkingTicket
-    vehicle:Vehicle
+    
     amount: float
     payment:Payment
     exit_time: datetime

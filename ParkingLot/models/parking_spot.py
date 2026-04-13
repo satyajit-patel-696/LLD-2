@@ -1,19 +1,25 @@
 from dataclasses import dataclass
-from enums.spot_type import SpotType
-from enums.spot_status import SpotStatus
+from typing import Optional
+from ParkingLot.enums.spot_type import SpotType
+from ParkingLot.enums.spot_status import SpotStatus
 
 @dataclass
 class ParkingSpot:    
     spot_id: str
-    slot_number: int
+    spot_number: int
     spot_type:SpotType
-    spot_status:SpotStatus
-    floor_number: int
+    spot_status:SpotStatus=SpotStatus.FREE
+    floor_id: str = ""
+
+    def is_available(self):
+        return self.spot_status == SpotStatus.FREE
 
     def is_avilable(self):
-        return self .spot_status==SpotStatus.FREE
+        # Backward-compatible alias used by existing repository/strategy code.
+        return self.is_available()
+
     def occupy(self):
-        self.slot_status=SpotStatus.OCCUPIED
+        self.spot_status=SpotStatus.OCCUPIED
     def free(self):
-        self.slot_status=SpotStatus.FREE
+        self.spot_status=SpotStatus.FREE
     

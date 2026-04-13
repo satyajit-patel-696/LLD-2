@@ -21,5 +21,5 @@ class HourlyPricingStrategy(PricingStrategy):
     }
     def calculate_price(self, entry_time: datetime, exit_time: datetime, spot_type: SpotType) -> float:
         duration = (exit_time - entry_time).total_seconds() / 3600
-        rate = self.SPOT_TYPE_RATE.get(spot_type, 0)
+        rate = self.SPOT_TYPE_RATE.get(spot_type,0)
         return duration * rate

@@ -3,7 +3,7 @@ from datetime import datetime
 import uuid
 
 from ParkingLot.enums.vehicle_type import VehicleType
-from ParkingLot.exceptions.parking_excceptions import TicketNotFoundException
+from ParkingLot.exceptions.parking_exceptions import TicketNotFoundException
 from ParkingLot.models.parking_ticket import ParkingTicket
 from ParkingLot.models.parking_ticket import ParkingTicket
 from ParkingLot.repositories.parking_spot_repository import ParkingSpotRepository
@@ -24,7 +24,11 @@ class TicketService:
     vehicle_repository:VehicleRepository
     ticket_repository:TicketRepository
 
-    def issue_ticket(self, vehicle_license_plate:str,vehicle_type:VehicleType, entry_gate_id:ParkingGate, entry_time:str,entry_attendant:Optional[ParkingAttendant]=None):
+    def issue_ticket(self, vehicle_license_plate:str,
+                     vehicle_type:VehicleType,
+                       entry_gate_id:ParkingGate,
+                    entry_time:datetime,
+                         entry_attendant:Optional[ParkingAttendant]=None):
         vehicle=self.vehicle_repository.find_by_license_plate(vehicle_license_plate)
         if not vehicle:
             vehicle=Vehicle(license_plate=vehicle_license_plate, vehicle_type=vehicle_type)
@@ -40,7 +44,7 @@ class TicketService:
                            vehicle=vehicle, 
                            parking_spot=spot, 
                            entry_gate=entry_gate_id,
-                         entry_time=datetime.now(),
+                         entry_time=entry_time, #for testing purpose, setting entry time 2 hours back    
                            entry_attendant=entry_attendant)
         self.ticket_repository.save(ticket)
         return ticket

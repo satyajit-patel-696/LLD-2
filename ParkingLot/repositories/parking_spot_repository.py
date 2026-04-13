@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Optional
 
 from ParkingLot.enums.spot_status import SpotStatus
@@ -6,7 +6,7 @@ from ParkingLot.models.parking_spot import ParkingSpot
 
 @dataclass
 class ParkingSpotRepository:
-    parking_spots: dict[str, ParkingSpot] = {}   #spot_id to parking spot mapping
+    parking_spots: dict[str, ParkingSpot] = field(default_factory=dict)   #spot_id to parking spot mapping
 
     def save(self, spot:ParkingSpot):
         self.parking_spots[spot.spot_id] = spot
