@@ -52,7 +52,7 @@ class PaymentService:
         invoice_id=f"INV-{uuid.uuid4().hex[:8]}"
         invoice=Invoice(invoice_id=invoice_id,
                         ticket=ticket,
-                        exit_time=datetime.now()-timedelta(hours=3), #for testing purpose, setting exit time 1 second after payment time
+                        exit_time=datetime.now(), #for testing purpose, setting exit time 1 second after payment time
                         amount=payment.amount,
                         payment=payment)
         return invoice

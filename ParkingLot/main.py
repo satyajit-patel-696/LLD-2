@@ -74,7 +74,7 @@ def main():
         vehicle_license_plate="KA01AB1234",
         vehicle_type=VehicleType.CAR,
         entry_gate_id=entry_gate,
-        entry_time=datetime.now()-timedelta(hours=4), #for testing purpose, setting entry time 2 hours back
+        entry_time=datetime.now()-timedelta(hours=6), # for testing purpose, set entry time 9 hours back
         entry_attendant=entry_attendant,
     )
     print(f"Ticket issued: {ticket.ticket_id}, Spot: {ticket.parking_spot.spot_number}")
